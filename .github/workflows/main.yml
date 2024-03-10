@@ -50,6 +50,12 @@ jobs:
       - name: Build and Test
         run: pyb
 
+      - name: Install SonarScanner
+        run: |
+          wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.1.41808-linux.zip
+          unzip sonar-scanner-cli-4.7.1.41808-linux.zip
+          export PATH="$PATH:./sonar-scanner/bin"
+          
       - name: SonarCloud Scan
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_NEW }}  # Required for SonarCloud GitHub integration
