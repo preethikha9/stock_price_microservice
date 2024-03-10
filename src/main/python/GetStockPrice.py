@@ -1,3 +1,6 @@
+"""
+test
+"""
 from flask import Flask, jsonify
 import requests
 from bs4 import BeautifulSoup
@@ -6,6 +9,9 @@ app = Flask(__name__)
 
 @app.route('/stock/<symbol>')
 def GetStockPrice(symbol):
+    """
+    test
+    """
     url = f"https://finance.yahoo.com/quote/{symbol}"
     response = requests.get(url)
     if response.status_code == 200:
