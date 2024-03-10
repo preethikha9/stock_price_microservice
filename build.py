@@ -8,10 +8,13 @@ use_plugin("python.coverage")
 use_plugin("python.distutils")
 
 
-name = "stock_price_microservice"
+name = "get_stock_price"
 default_task = "publish"
 
 
 @init
 def set_properties(project):
     project.build_depends_on("requests_mock")
+    project.build_depends_on("BeautifulSoup4")
+    project.build_depends_on("Flask")
+    project.build_depends_on("requests")
