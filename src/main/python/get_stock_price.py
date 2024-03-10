@@ -18,7 +18,7 @@ def get_stock_price(symbol):
     GetStockPrice
     """
 
-    url = 'https://finance.yahoo.com/quote/{symbol}'
+    url = f'https://finance.yahoo.com/quote/{symbol}'
     response = requests.get(url, timeout=60)
     if response.status_code == 200:
         soup = BeautifulSoup(response.text, 'html.parser')
