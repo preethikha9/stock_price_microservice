@@ -55,7 +55,7 @@ jobs:
           wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006.zip
           unzip sonar-scanner-cli-*.zip
           pwd
-          export PATH="$PATH:./sonar-scanner/bin"
+          export PATH="$PATH:./sonar-scanner-5.0.1.3006/bin"
           ls -al
           echo $PATH
           
