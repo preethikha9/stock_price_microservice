@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 
 @app.route('/stock/<symbol>')
-def get_stock_price(symbol):
+def get_stock_price(symbol)":
     """
     GetStockPrice
     """
