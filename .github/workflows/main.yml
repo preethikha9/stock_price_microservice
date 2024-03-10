@@ -64,6 +64,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.TOKEN_NEW }}  # Required for SonarCloud GitHub integration
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  # Required for SonarCloud authentication
         run: |
+           export PATH="$PATH:./sonar-scanner-5.0.1.3006/bin"
+           ls -al
+           echo $PATH
            pwd
            sonar-scanner \
             -Dsonar.projectKey=preethikha9_stock_price_microservice \
