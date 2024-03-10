@@ -65,7 +65,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  # Required for SonarCloud authentication
         run: |
            pwd
-           ./sonar-scanner \
+           sonar-scanner \
             -Dsonar.projectKey=preethikha9_stock_price_microservice \
             -Dsonar.organization=preethikha9 \
             -Dsonar.sources=src/main/python \
