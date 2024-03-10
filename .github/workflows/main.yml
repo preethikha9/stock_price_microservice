@@ -52,8 +52,8 @@ jobs:
 
       - name: Install SonarScanner
         run: |
-          wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.1.41808-linux.zip
-          unzip sonar-scanner-cli-4.7.1.41808-linux.zip
+          wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006.zip
+          unzip sonar-scanner-cli-*.zip
           export PATH="$PATH:./sonar-scanner/bin"
           
       - name: SonarCloud Scan
