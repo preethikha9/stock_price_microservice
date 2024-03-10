@@ -26,6 +26,8 @@ def get_stock_price(symbol):
         if price_element:
             stock_price = price_element.text
             return jsonify({"symbol": symbol, "price": stock_price})
+    
+    return jsonify({"symbol": '', "price": ''})
 
 if __name__ == "__main__":
     app.run(debug=True)
