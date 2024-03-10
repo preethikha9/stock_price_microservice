@@ -3,7 +3,13 @@ import requests_mock
 from GetStockPrice import app
 
 class TestGetStockPrice(unittest.TestCase):
+    """
+    test
+    """
     def test_get_stock_price_success(self):
+            """
+            test
+            """
         symbol = 'AAPL'
         expected_price = '170.73'
         with requests_mock.Mocker() as mocker:
@@ -15,6 +21,9 @@ class TestGetStockPrice(unittest.TestCase):
             self.assertEqual(data['price'], expected_price)
 
     def test_get_stock_price_failure(self):
+            """
+            test
+            """
         symbol = 'AAPL'
         with requests_mock.Mocker() as mocker:
             mocker.get(f"https://finance.yahoo.com/quote/{symbol}", status_code=404)
