@@ -52,10 +52,10 @@ jobs:
 
       - name: Install SonarScanner
         run: |
-          wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747.zip
+          wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.1.3023.zip
           unzip sonar-scanner-cli-*.zip
           pwd
-          export PATH="$PATH:./sonar-scanner-4.7.0.2747/bin"
+          export PATH="$PATH:./sonar-scanner-4.8.1.3023/bin"
           ls -al
           echo $PATH
           
@@ -64,7 +64,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.TOKEN_NEW }}  # Required for SonarCloud GitHub integration
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  # Required for SonarCloud authentication
         run: |
-           export PATH="$PATH:./sonar-scanner-4.7.0.2747/bin"
+           export PATH="$PATH:./sonar-scanner-4.8.1.3023/bin"
            ls -al
            echo $PATH
            pwd
