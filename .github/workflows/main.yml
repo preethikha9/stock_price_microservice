@@ -50,6 +50,18 @@ jobs:
       - name: Build and Test
         run: pyb
 
+      - name: SonarCloud Scan
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN_NEW }}  # Required for SonarCloud GitHub integration
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  # Required for SonarCloud authentication
+        run: |
+          sonar-scanner \
+            -Dsonar.projectKey=preethikha9_stock_price_microservice \
+            -Dsonar.organization=preethikha9 \
+            -Dsonar.sources=src/main/python \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+
       - name: Upload Test Results
         uses: actions/upload-artifact@v2
         with:
