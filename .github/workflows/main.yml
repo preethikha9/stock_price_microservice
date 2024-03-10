@@ -54,6 +54,7 @@ jobs:
         run: |
           wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006.zip
           unzip sonar-scanner-cli-*.zip
+          pwd
           export PATH="$PATH:./sonar-scanner/bin"
           
       - name: SonarCloud Scan
@@ -61,7 +62,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.TOKEN_NEW }}  # Required for SonarCloud GitHub integration
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  # Required for SonarCloud authentication
         run: |
-          sonar-scanner \
+           pwd
+           ./sonar-scanner \
             -Dsonar.projectKey=preethikha9_stock_price_microservice \
             -Dsonar.organization=preethikha9 \
             -Dsonar.sources=src/main/python \
