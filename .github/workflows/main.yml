@@ -50,30 +50,15 @@ jobs:
       - name: Build and Test
         run: pyb
 
-      - name: Install SonarScanner
-        run: |
-          wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.1.3023.zip
-          unzip sonar-scanner-cli-*.zip
-          pwd
-          export PATH="$PATH:./sonar-scanner-4.8.1.3023/bin"
-          ls -al
-          echo $PATH
-          
-      - name: SonarCloud Scan
+      - name: Run SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        with:
+         projectBaseDir: ./
+         args: >
+          -Dsonar.organization=preethikha9
+          -Dsonar.projectKey=preethikha9_stock_price_microservice
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN_NEW }}  # Required for SonarCloud GitHub integration
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  # Required for SonarCloud authentication
-        run: |
-           export PATH="$PATH:./sonar-scanner-4.8.1.3023/bin"
-           ls -al
-           echo $PATH
-           pwd
-           sonar-scanner \
-            -Dsonar.projectKey=preethikha9_stock_price_microservice \
-            -Dsonar.organization=preethikha9 \
-            -Dsonar.sources=src/main/python \
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: Upload Test Results
         uses: actions/upload-artifact@v2
