@@ -18,10 +18,10 @@ class TestGetStockPrice(unittest.TestCase):
         symbol = "AAPL"
         expected_price = "170.73"
         with requests_mock.Mocker() as mocker:
-            url = f"https://finance.yahoo.com/quote/{symbol}"
+            url = f"https://finance.yahoo.com/quote/AAPL"
             text = "<span>Current</span><span>170.73</span>"
             x = mocker.get(url, text=text)
-            response = app.test_client().get(f"/stock/{symbol}")
+            response = app.test_client().get(f"/stock/AAPL")
             data = response.get_json()
             self.assertEqual(response.status_code, 200)
             self.assertEqual(data["symbol"], symbol)
@@ -33,8 +33,8 @@ class TestGetStockPrice(unittest.TestCase):
         """
         symbol = "AAPL"
         with requests_mock.Mocker() as mocker:
-            mocker.get(f"https://finance.yahoo.com/quote/{symbol}", status_code=404)
-            response = app.test_client().get(f"/stock/{symbol}")
+            mocker.get(f"https://finance.yahoo.com/quote/AAPL", status_code=404)
+            response = app.test_client().get(f"/stock/AAPL")
             data = response.get_json()
             self.assertEqual(response.status_code, 500)
             self.assertEqual(data["error"], "Failed to fetch stock price")
